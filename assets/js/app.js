@@ -76,29 +76,52 @@ function hitung() {
     if ($('#permintaan').val() == "" || $('#permintaanMaximal').val() == "" || $('#permintaanMinimal').val() == "" || $('#persediaan').val() == "" || $('#persediaanMaximal').val() == "" || $('#persediaanMinimal').val() == "" || $('#produksiMaximal').val() == "" || $('#produksiMinimal').val() == "") {
         alert("Data Harus Di isi");
     } else {
-        if ($('#permintaanMaximal').val() < $('#permintaanMinimal').val()) {
-            $('#errorPermintaanMaximal').append('Permintaan maximal harus lebih besar dari Permintaan minimal')
-            $('#errorPermintaanMinimal').append('Permintaan minimal harus lebih kecil dari Permintaan maximal')
+
+        var permintaan = parseFloat($('#permintaan').val());
+        var permintaanMaximal = parseFloat($('#permintaanMaximal').val());
+        var permintaanMinimal = parseFloat($('#permintaanMinimal').val());
+        var persediaan = parseFloat($('#persediaan').val());
+        var persediaanMaximal = parseFloat($('#persediaanMaximal').val());
+        var persediaanMinimal = parseFloat($('#persediaanMinimal').val());
+        var produksi = parseFloat($('#produksi').val());
+        var produksiMaximal = parseFloat($('#produksiMaximal').val());
+        var produksiMinimal = parseFloat($('#produksiMinimal').val());
+
+        if (permintaanMaximal < permintaanMinimal) {
+            $('#errorPermintaanMaximal').html('Permintaan maximal harus lebih besar dari Permintaan minimal')
+            $('#errorPermintaanMinimal').html('Permintaan minimal harus lebih kecil dari Permintaan maximal')
             p1 = false;
         } else {
             $('#errorPermintaanMaximal').html('');
             $('#errorPermintaanMinimal').html('');
-            p1 = true;
+            if (permintaan <= permintaanMaximal && permintaan >= permintaanMinimal) {
+                $('#errorPermintaan').html('');
+                p1 = true;
+            } else {
+                $('#errorPermintaan').html('Permintaan harus diantara Permintaan Minimal dan Permintaan Maximal');
+                p1 = false;
+            }
         }
 
-        if ($('#persediaanMaximal').val() < $('#persediaanMinimal').val()) {
-            $('#errorPersediaanMaximal').append('Persediaan maximal harus lebih besar dari Persediaan minimal')
-            $('#errorPersediaanMinimal').append('Persediaan minimal harus lebih kecil dari Persediaan maximal')
+        if (persediaanMaximal < persediaanMinimal) {
+            $('#errorPersediaanMaximal').html('Persediaan maximal harus lebih besar dari Persediaan minimal')
+            $('#errorPersediaanMinimal').html('Persediaan minimal harus lebih kecil dari Persediaan maximal')
             p2 = false;
         } else {
             $('#errorPersediaanMaximal').html('');
             $('#errorPersediaanMinimal').html('');
-            p2 = true;
+            if (persediaan <= persediaanMaximal && persediaan >= persediaanMinimal) {
+                $('#errorPersediaan').html('');
+                p2 = true;
+            } else {
+                $('#errorPersediaan').html('Persediaan harus diantara Persediaan Minimal dan Persediaan Maximal');
+                p2 = false;
+            }
         }
 
-        if ($('#produksiMaximal').val() < $('#produksiMinimal').val()) {
-            $('#errorProduksiMaximal').append('Produksi maximal harus lebih besar dari Produksi minimal')
-            $('#errorProduksiMinimal').append('Produksi minimal harus lebih kecil dari Produksi maximal')
+        if (produksiMaximal < produksiMinimal) {
+            $('#errorProduksiMaximal').html('Produksi maximal harus lebih besar dari Produksi minimal')
+            $('#errorProduksiMinimal').html('Produksi minimal harus lebih kecil dari Produksi maximal')
             p3 = false;
         } else {
             $('#errorProduksiMaximal').html('');
@@ -107,21 +130,12 @@ function hitung() {
         }
 
         if (p1 == true && p2 == true && p3 == true) {
-            var permintaan = parseFloat($('#permintaan').val());
-            var permintaanMaximal = parseFloat($('#permintaanMaximal').val());
-            var permintaanMinimal = parseFloat($('#permintaanMinimal').val());
+
             var permintaanTurun = (permintaanMaximal - permintaan) / (permintaanMaximal - permintaanMinimal);
             var permintaanNaik = (permintaan - permintaanMinimal) / (permintaanMaximal - permintaanMinimal);
 
-            var persediaan = parseFloat($('#persediaan').val());
-            var persediaanMaximal = parseFloat($('#persediaanMaximal').val());
-            var persediaanMinimal = parseFloat($('#persediaanMinimal').val());
             var persediaanSedikit = (persediaanMaximal - persediaan) / (persediaanMaximal - persediaanMinimal);
             var persediaanBanyak = (persediaan - persediaanMinimal) / (persediaanMaximal - persediaanMinimal);
-
-            var produksi = parseFloat($('#produksi').val());
-            var produksiMaximal = parseFloat($('#produksiMaximal').val());
-            var produksiMinimal = parseFloat($('#produksiMinimal').val());
 
             var a1 = Math.min(permintaanTurun, persediaanBanyak);
             var a2 = Math.min(permintaanTurun, persediaanSedikit);
@@ -144,6 +158,18 @@ function hitung() {
 
             $('#produksi').html(z);
             console.log('');
+            console.log('-----------------------------------------');
+            console.log('Permintaan Maximal = ' + permintaanMaximal);
+            console.log('Permintaan Minimal = ' + permintaanMinimal);
+            console.log('Permintaan         = ' + permintaan);
+            console.log('-----------------------------------------');
+            console.log('Persediaan Maximal = ' + persediaanMaximal);
+            console.log('Persediaan Minimal = ' + persediaanMinimal);
+            console.log('Persediaan         = ' + persediaan);
+            console.log('-----------------------------------------');
+            console.log('Produksi Maximal   = ' + produksiMaximal);
+            console.log('Produksi Minimal   = ' + produksiMinimal);
+            console.log('-----------------------------------------');
             console.log('Permintaan Turun   = ' + permintaanTurun);
             console.log('Permintaan Naik    = ' + permintaanNaik);
             console.log('-----------------------------------------');
@@ -161,6 +187,7 @@ function hitung() {
             console.log('z4 = ' + z4);
             console.log('-----------------------------------------');
             console.log("Z = (" + az1 + " + " + az2 + " + " + az3 + " + " + az4 + ") / " + a1 + " + " + a2 + " + " + a3 + " + " + a4 + " = " + z);
+            console.log('-----------------------------------------');
         }
     }
 }
