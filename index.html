@@ -123,10 +123,41 @@
     <script>
         function hanyaAngka(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57))
+            if ((charCode < 48 || charCode > 57))
                 return false;
             return true;
         }
+
+        function hitung() {
+            if ($('#permintaan').val() == "" || $('#permintaanMaximal').val() == "" || $('#permintaanMinimal').val() == "" || $('#persediaan').val() == "" || $('#persediaanMaximal').val() == "" || $('#persediaanMinimal').val() == "" || $('#produksiMaximal').val() == "" || $('#produksiMinimal').val() == "") {
+                alert("Data Harus Di isi");
+            } else {
+                if ($('#permintaanMaximal').val() < $('#permintaanMinimal').val()) {
+                    $('#errorPermintaanMaximal').append('Permintaan maximal harus lebih besar dari Permintaan minimal')
+                    $('#errorPermintaanMinimal').append('Permintaan minimal harus lebih kecil dari Permintaan maximal')
+                } else {
+                    $('#errorPermintaanMaximal').html('');
+                    $('#errorPermintaanMinimal').html('');
+                }
+
+                if ($('#persediaanMaximal').val() < $('#persediaanMinimal').val()) {
+                    $('#errorPersediaanMaximal').append('Persediaan maximal harus lebih besar dari Persediaan minimal')
+                    $('#errorPersediaanMinimal').append('Persediaan minimal harus lebih kecil dari Persediaan maximal')
+                } else {
+                    $('#errorPersediaanMaximal').html('');
+                    $('#errorPersediaanMinimal').html('');
+                }
+
+                if ($('#produksiMaximal').val() < $('#produksiMinimal').val()) {
+                    $('#errorProduksiMaximal').append('Produksi maximal harus lebih besar dari Produksi minimal')
+                    $('#errorProduksiMinimal').append('Produksi minimal harus lebih kecil dari Produksi maximal')
+                } else {
+                    $('#errorProduksiMaximal').html('');
+                    $('#errorProduksiMinimal').html('');
+                }
+            }
+        }
+
         $(document).ready(function() {
 
             $('#permintaanMaximal').keypress(function(event) {
@@ -191,17 +222,6 @@
                     hitung();
                 }
             });
-
-            function hitung() {
-                if ($('#permintaan').val() == "" || $('#permintaanMaximal').val() == "" || $('#permintaanMinimal').val() == "" || $('#persediaan').val() == "" || $('#persediaanMaximal').val() == "" || $('#persediaanMinimal').val() == "" || $('#produksiMaximal').val() == "" || $('#produksiMinimal').val() == "") {
-                    alert("Data Harus Di isi");
-                } else {
-                    if ($('#permintaanMaximal').val() < $('#permintaanMinimal').val()) {
-                        $('#errorPermintaanMaximal').append('Permintaan maximal harus lebih besar dari Permintaan minimal')
-                    }
-                }
-
-            }
         });
     </script>
 </body>
