@@ -10,10 +10,9 @@
     <div class="container mb-5">
         <div class="text-center">
             <h1>Fuzzy Inference System</h1>
-            <label>By Maulana Kevin Pradana</label>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
+        <div class="row justify-content-center mt-3">
+            <div class="col-lg-6 mb-3">
                 <div class="card shadow h-100">
                     <div class="card-header">
                         <h5>Data produksi perusahaan</h5>
@@ -26,7 +25,7 @@
                                         <label for="permintaanMaximal" class="col-form-label">Permintaan Maximal</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="permintaanMaximal" id="permintaanMaximal" autofocus>
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="permintaanMaximal" id="permintaanMaximal" autofocus>
                                         <small style="color: red;" id="errorPermintaanMaximal"></small>
                                     </td>
                                 </tr>
@@ -35,7 +34,7 @@
                                         <label for="permintaanMinimal" class="col-form-label">Permintaan Minimal</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="permintaanMinimal" id="permintaanMinimal">
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="permintaanMinimal" id="permintaanMinimal">
                                         <small style="color: red;" id="errorPermintaanMinimal"></small>
                                     </td>
                                 </tr>
@@ -44,7 +43,7 @@
                                         <label for="persediaanMaximal" class="col-form-label">Persediaan Maximal</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="persediaanMaximal" id="persediaanMaximal">
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="persediaanMaximal" id="persediaanMaximal">
                                         <small style="color: red;" id="errorPersediaanMaximal"></small>
                                     </td>
                                 </tr>
@@ -53,7 +52,7 @@
                                         <label for="persediaanMinimal" class="col-form-label">Persediaan Minimal</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="persediaanMinimal" id="persediaanMinimal">
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="persediaanMinimal" id="persediaanMinimal">
                                         <small style="color: red;" id="errorPersediaanMinimal"></small>
                                     </td>
                                 </tr>
@@ -62,7 +61,7 @@
                                         <label for="produksiMaximal" class="col-form-label">Produksi Maximal</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="produksiMaximal" id="produksiMaximal">
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="produksiMaximal" id="produksiMaximal">
                                         <small style="color: red;" id="errorProduksiMaximal"></small>
                                     </td>
                                 </tr>
@@ -71,7 +70,7 @@
                                         <label for="produksiMinimal" class="col-form-label">Produksi Minimal</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="produksiMinimal" id="produksiMinimal">
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="produksiMinimal" id="produksiMinimal">
                                         <small style="color: red;" id="errorProduksiMinimal"></small>
                                     </td>
                                 </tr>
@@ -80,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 mb-3">
                 <div class="card shadow h-100">
                     <div class="card-header">
                         <h5>Data Permintaan</h5>
@@ -93,7 +92,7 @@
                                         <label for="permintaan" class="col-form-label">Permintaan</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="permintaan" id="permintaan">
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="permintaan" id="permintaan">
                                     </td>
                                 </tr>
                                 <tr>
@@ -101,7 +100,7 @@
                                         <label for="persediaan" class="col-form-label">Persediaan</label>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="persediaan" id="persediaan">
+                                        <input class="form-control" type="number" onkeypress="return hanyaAngka(event)" name="persediaan" id="persediaan">
                                     </td>
                                 </tr>
                             </tbody>
@@ -109,7 +108,7 @@
                         <button class="btn btn-block btn-primary" type="submit" id="hitung" onclick="return hitung()" onkeypress="return hitung()">Hitung</button>
                     </div>
                     <div class="card-footer">
-                        <h5>Jumlah Produksi = <span id="produksi"></span></h5>
+                        <h5>Total yang harus di produksi = <span id="produksi"></span></h5>
                     </div>
                 </div>
             </div>
