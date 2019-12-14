@@ -1,92 +1,34 @@
-$('#permintaanMaximal').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#permintaanMinimal').focus();
-    }
-});
-
-$('#permintaanMinimal').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#persediaanMaximal').focus();
-    }
-});
-
-$('#persediaanMaximal').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#persediaanMinimal').focus();
-    }
-});
-
-$('#persediaanMinimal').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#produksiMaximal').focus();
-    }
-});
-
-$('#persediaanMinimal').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#produksiMaximal').focus();
-    }
-});
-
-$('#produksiMaximal').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#produksiMinimal').focus();
-    }
-});
-
-$('#produksiMinimal').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#permintaan').focus();
-    }
-});
-
-$('#permintaan').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        $('#persediaan').focus();
-    }
-});
-
-$('#persediaan').keypress(function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        hitung();
-    }
-});
-
-var p1 = false;
-var p2 = false;
-var p3 = false;
-
-function hanyaAngka(evt) {
+function hanyaAngka(evt, id) {
     var charCode = (evt.which) ? evt.which : event.keyCode
-    if ((charCode < 48 || charCode > 57))
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode == '13') {
+        document.getElementById(id).focus();
+    }
+    if ((charCode < 48 || charCode > 57)) {
         return false;
-    return true;
+    } else {
+        return true;
+    }
 }
 
 function hitung() {
-    if ($('#permintaan').val() == "" || $('#permintaanMaximal').val() == "" || $('#permintaanMinimal').val() == "" || $('#persediaan').val() == "" || $('#persediaanMaximal').val() == "" || $('#persediaanMinimal').val() == "" || $('#produksiMaximal').val() == "" || $('#produksiMinimal').val() == "") {
+    var permintaan = parseFloat($('#permintaan').val());
+    var permintaanMaximal = parseFloat($('#permintaanMaximal').val());
+    var permintaanMinimal = parseFloat($('#permintaanMinimal').val());
+    var persediaan = parseFloat($('#persediaan').val());
+    var persediaanMaximal = parseFloat($('#persediaanMaximal').val());
+    var persediaanMinimal = parseFloat($('#persediaanMinimal').val());
+    var produksi = parseFloat($('#produksi').val());
+    var produksiMaximal = parseFloat($('#produksiMaximal').val());
+    var produksiMinimal = parseFloat($('#produksiMinimal').val());
+
+    var p1 = false;
+    var p2 = false;
+    var p3 = false;
+
+    if (permintaan == "" || permintaanMaximal == "" || permintaanMinimal == "" || persediaan == "" || persediaanMaximal == "" || persediaanMinimal == "" || produksiMaximal == "" || produksiMinimal == "") {
         alert("Data Harus Di isi");
     } else {
-
-        var permintaan = parseFloat($('#permintaan').val());
-        var permintaanMaximal = parseFloat($('#permintaanMaximal').val());
-        var permintaanMinimal = parseFloat($('#permintaanMinimal').val());
-        var persediaan = parseFloat($('#persediaan').val());
-        var persediaanMaximal = parseFloat($('#persediaanMaximal').val());
-        var persediaanMinimal = parseFloat($('#persediaanMinimal').val());
-        var produksi = parseFloat($('#produksi').val());
-        var produksiMaximal = parseFloat($('#produksiMaximal').val());
-        var produksiMinimal = parseFloat($('#produksiMinimal').val());
-
         if (permintaanMaximal < permintaanMinimal) {
             $('#errorPermintaanMaximal').html('Permintaan maximal harus lebih besar dari Permintaan minimal')
             $('#errorPermintaanMinimal').html('Permintaan minimal harus lebih kecil dari Permintaan maximal')
